@@ -1,0 +1,203 @@
+create table angajati(
+    id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nume varchar(255) Not NUll,
+    prenume varchar(255) not null,
+    parola varchar(255) not null,
+    data_start boolean,
+    data_finish boolean
+);
+
+create table conturi(
+    id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    username varchar(255) Not NUll,
+    parola varchar(255) not null,
+    stare boolean,
+    nume varchar(255) Not NUll,
+    prenume varchar(255) not null,
+    UNIQUE (username)
+);
+
+create table plati(
+    id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nume varchar(255) Not NUll,
+    prenume varchar(255) Not NUll,
+    start datetime,
+    stop datetime,
+    suma int(11) NOT NULL
+);
+
+create table concedii(
+    id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    username varchar(255) Not NUll,
+    zile_concediu_ramase int(11)
+    UNIQUE (username)
+);
+
+create table zile_concedii(
+    id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    username varchar(255) Not NUll,
+    start datetime,
+    stop datetime
+);
+
+SELECT COUNT(*) FROM plati;
+
+
+INSERT INTO concedii (username, zile_concediu_ramase) VALUES ('Cont_secundar', 30);
+INSERT INTO conturi (username,parola,stare) VALUES ('Cont_secundar','parola',0);
+INSERT INTO conturi (username,parola,stare,nume,prenume) VALUES ('Mihai Leonard','1234',0,'Mihai','Leonard');
+INSERT INTO conturi (username,parola,stare,nume,prenume) VALUES ('Mihai_Leonard','Admin',1,'Mihai','Leonard');
+INSERT INTO conturi (username,parola,stare,nume,prenume) VALUES ('Cont_secundar','1234',0,'Cont','Secundar');
+
+Select * from conturi where username='?';
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    <center>
+        <ul>
+            <li class="special">Nume</li>
+            <li class="special">Prenume</li>
+            <li class="special">Start</li>
+            <li class="special">Stop</li>
+            <li class="special">Suma Finală</li>
+        </ul>
+        <ul>
+            <li>Nume</li>
+            <li>Prenume</li>
+            <li>Start</li>
+            <li>Stop</li>
+            <li>Suma Finală</li>
+        </ul>
+        <ul>
+            <li>Nume</li>
+            <li>Prenume</li>
+            <li>Start</li>
+            <li>Stop</li>
+            <li>Suma Finală</li>
+        </ul>
+        <ul>
+            <li>Nume</li>
+            <li>Prenume</li>
+            <li>Start</li>
+            <li>Stop</li>
+            <li>Suma Finală</li>
+        </ul>
+    </center>
+
+ul li{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    height: auto;
+    width: 30vh;
+}
+.special {
+    font-size: 16px;
+}
+ul{
+    background-color: white;
+    width: auto;
+    padding: 0;
+    margin: 0 10% 0 10%;
+    border: solid 1px black;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+Select * from conturi where stare=0;
+insert into plati (nume,prenume,start,stop,suma) VALUES ('Mihai','Leonard',CURRENT_TIMESTAMP(),CURRENT_TIMESTAMP(),0);
+
+$sql_cod = 'SELECT * FROM plati ORDER BY id asc;';
+$sql_rez = mysqli_query($conn,$sql_cod);
+$sql = mysqli_fetch_assoc($sql_rez);
+
+while($sql = mysqli_fetch_assoc($sql_rez)){
+    echo '
+        <ul>
+            <li>$sql['nume']</li>
+            <li>$sql['prenume']</li>
+            <li>$sql['start']</li>
+            <li>$sql['stop[']</li>
+            <li>$sql['suma']</li>
+        </ul>
+    ';
+}
+
+
+UPDATE plati 
+SET stop = CURRENT_TIMESTAMP()
+WHERE nume = $nume AND prenume = $prenume;
+
+
+
+
+                <div>&nbsp;</div><div class="clearfix">&nbsp;</div>
+                <div class="container">
+                    <div>&nbsp;</div><div class="clearfix">&nbsp;</div>
+                    <center>
+                        <form action="baza_de_date/start.php" method="POST">
+                            <select name="select_persoane" class="select_persoane">
+                                <option>Alegeți o persoană</option>
+                            </select>
+                            <button type="submit" name="submit"> Start Program </button>
+                        </form>
+                    </center>
+                    <div>&nbsp;</div><div class="clearfix">&nbsp;</div>
+                    <center>
+                        <form action="baza_de_date/stop.php" method="POST">
+                            <select name="select_persoane" class="select_persoane">
+                                <option>Alegeți o persoană</option>
+                            </select>
+                            <button type="submit" name="submit"> Stop Program </button>
+                        </form>
+                    </center>
+                    <div>&nbsp;</div><div class="clearfix">&nbsp;</div>
+                </div>
+                <div>&nbsp;</div><div class="clearfix">&nbsp;</div>
+
+
+
+
+
+
+                <div class="container">
+                    <div>&nbsp;</div><div class="clearfix">&nbsp;</div>
+                    <center>
+                        <form action="baza_de_date/adaugare.php" method="POST">
+                            <input type="text" placeholder="Username" name="username" required><br><br>
+                            <input type="password" placeholder="Parola" name="parola" required><br><br>
+                            <input type="text" placeholder="Numele" name="name" required><br><br>
+                            <input type="text" placeholder="Prenume" name="prenom" required><br><br>
+                            <button type="submit" name="submit"> Adăugare </button>
+                        </form>
+                    </center>
+                    <div>&nbsp;</div><div class="clearfix">&nbsp;</div>
+                    <center>
+                        <form action="baza_de_date/stergere.php" method="POST">
+                            <select name="select_persoane" class="select_persoane">
+                                <option>Alegeți o persoană</option>
+                                $all_from_mysqli_select = "SELECT * FROM conturi where stare = 0";
+                                $result_all_from_mysqli = mysqli_query($conn,$all_from_mysqli_select);
+                                while($utilizatori = mysqli_fetch_assoc($result_all_from_mysqli)){
+                                    echo '
+                                    <option>'.$utilizatori['username'].'</option>
+                                    ';
+                                }
+                            </select>
+                            <button type="submit" name="submit"> Stop Program </button>
+                        </form>
+                    </center>
+                    <div>&nbsp;</div><div class="clearfix">&nbsp;</div>
+                </div>
+
+
+

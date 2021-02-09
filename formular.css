@@ -1,0 +1,41 @@
+body{
+    overflow: hidden;
+    font-family: 'Rowdies', cursive;
+    user-select: none;
+    height: 100%;
+    width: 100%;
+}
+.container {
+    margin-top: 5vh;
+    height: auto;
+    width: 100%;
+    background-color: rgb(156, 156, 156);
+    margin-left: 5%;
+    margin-right: 5%;
+}
+button{
+    border: 1px solid rgb(133, 133, 133);
+    background-color: rgb(207, 207, 207);
+}
+button:hover{
+    background-color: rgb(255, 255, 255);
+    transition: 0.2s;
+}
+i{
+    position: static;
+    padding: 5vh;
+    display: inline;
+}
+i p{
+    color: transparent;
+    font-size: 10px;
+    padding: 2px;
+}
+i:hover p{
+    color: black;
+    padding: 0px;
+    opacity: 0.4;
+    border: 1px solid rgb(133, 133, 133);
+    background-color: rgb(207, 207, 207);
+    transition: 0.3s;
+}

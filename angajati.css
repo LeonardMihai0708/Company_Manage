@@ -1,0 +1,95 @@
+header{
+    width: 100%;
+    height: auto;
+    background-color: rgb(54, 54, 54);
+    font-size: 18px;
+    padding: 10px;
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+header a{
+    color: white;
+    margin-left: 2vh;
+    font-size: 16px;
+}
+header button:hover{
+    background-color: rgb(80, 80, 80);
+    transition: 0.2s;
+    color: rgb(206, 203, 203);
+}
+header button{
+    font-size: 14px;
+    padding: auto;
+    border: solid black 2px;
+}
+header a:hover{
+    color: rgb(173, 173, 173);
+    text-decoration: none;
+}
+
+.logare{
+    float: right;
+    margin: 0;
+    display: inline-block;
+    padding: 0;
+    clear: both;
+    margin-right: 2vh;
+    display: inline-block;
+    font-size: 13px;
+}
+
+.container{
+    height: auto;
+    width: 100%;
+    background-color: rgb(202, 202, 202);
+}
+.container h1{
+    font-size: 16px;
+    padding: 25px;
+    user-select: none;
+}
+.container p{
+    font-size: 16px;
+    padding: 16px;
+    user-select: none;
+}
+.container h3{
+    font-size: 16px;
+    padding: 8px;
+    user-select: none;
+}
+ul li{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    height: auto;
+    width: 30vh;
+}
+.special {
+    font-size: 16px;
+}
+ul{
+    background-color: white;
+    width: auto;
+    padding: 0;
+    margin: 0 10% 0 10%;
+    border: solid 1px black;
+    font-family: 'Courier New', Courier, monospace;
+}
+.container button{
+    font-size: 16px;
+    padding: auto;
+    border: solid black 2px;
+}
+.container button:hover{
+    background-color: rgb(80, 80, 80);
+    transition: 0.2s;
+    color: rgb(206, 203, 203);
+}
+.copyright{
+    position: relative;
+    margin-top: 10vh;
+}

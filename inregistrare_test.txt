@@ -1,0 +1,183 @@
+
+
+
+- baza de date cu inregistrarile
+- 
+- 
+
+
+
+create table programari(
+    id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nume varchar(255) Not NUll,
+    prenume varchar(255) not null,
+    telefon varchar(255) not null,
+    data_accesare datetime not null,
+    data_programare datetime not null
+);
+
+insert into programari (nume,prenume,telefon,data_accesare,data_programare) VALUES ('Mihai2','Leonard2','0749571318',CURRENT_TIMESTAMP());
+
+$d=strtotime("+1 hours");
+$data_program = date("H:i", $d);
+$sql = "insert into programari (nume,prenume,telefon,data_accesare,data_programare) VALUES ('$nume', '$prenom', '$telefon', CURRENT_TIMESTAMP(), '$data_program');";
+mysqli_query($conn,$sql);
+
+
+
+
+if($nume != NULL && $prenom !=null && $telefon!=NULL){
+        if(strlen($prenom) < 3 && strlen($nume) < 3){
+            header("Location: ../formular.php?status=litere_insuficiente");
+            exit();
+        } else{
+            if($telefon[0]== "0" && $telefon[1]== "7" && strlen($telefon) == 10){
+                if(strchr($nume,'1234567890')!=NULL || strchr($prenom,'1234567890')!=NULL){
+                    header("Location: ../formular.php?status=nume_incorect");
+                    exit();
+                } else {
+                    
+                    header("Location: ../formular.php?status=succes");
+                }
+            }else{
+                header("Location: ../formular.php?status=numar_incorect");
+                exit();
+            }
+        }
+    } else {
+        header("Location: ../formular.php?status=failed");
+        exit();
+    }
+
+
+    if(strchr($prenom,'0')!=NULL || strchr($prenom,'1')!=NULL || strchr($prenom,'3')!=NULL || strchr($prenom,'5')!=NULL || strchr($prenom,'6')!=NULL || strchr($prenom,'7')!=NULL || strchr($prenom,'8')!=NULL || strchr($prenom,'9')!=NULL){
+        header("Location: ../formular.php?status=prenume_incorect");
+        exit();
+    } else if(strchr($nume,'0')!=NULL || strchr($nume,'1')!=NULL || strchr($nume,'3')!=NULL || strchr($nume,'5')!=NULL || strchr($nume,'6')!=NULL || strchr($nume,'7')!=NULL || strchr($nume,'8')!=NULL || strchr($nume,'9')!=NULL){
+        header("Location: ../formular.php?status=nume_incorect");
+        exit();
+    }
+
+
+
+
+if(date(H) > 19 || date(H) < 7){
+    echo "<center><p class='eroare'><b> Vă rugăm sa reveniți mâine dupa ora 7! </b></p></center>";
+    exit();
+}
+
+if(date("D",$d) == 0){
+    echo "<center><p class='eroare'><b> Vă rugăm sa reveniți mâine dupa ora 7! </b></p></center>";
+    exit();
+}
+
+
+
+
+
+date("D") == 1 || date("H") > 20 || date("H") < 7
+
+
+
+
+// PDF
+                    
+                $data_program2 = date("H:i", strtotime("+1 hours"));
+                $mpdf = new \Mpdf\Mpdf();
+                $data = '';
+                $data .= '<h2>Programarea a fost făcută!</h2><br><br>';
+                $data .= '<p>Trebuie să fiți prezent astăzi la ora: <b>'. $data_program2 . '</b></p>';
+                $data .= '<p>Numele: <b>' . $nume . '</b></p>';
+                $data .= '<p>Prenumele: <b>' . $prenom. '</b></p>';
+                $data .= '<p>Număr de telefon: <b>' . $telefon. '</b></p>';
+                $mpdf->WriteHTML($data);
+                $nume_document= 'programare'.date("H.i").'.pdf';
+                $mpdf->Output($nume_document, 'D');
+
+//PDF
+
+
+$data = '';
+                    $data .= '<h2>Programarea a fost făcută!</h2><br><br>';
+                    $data .= '<p>Trebuie să fiți prezent astăzi la ora: <b>'. $data_program2 . '</b></p>';
+                    $data .= '<p>Numele: <b>' . $nume . '</b></p>';
+                    $data .= '<p>Prenumele: <b>' . $prenom. '</b></p>';
+                    $data .= '<p>Număr de telefon: <b>' . $telefon. '</b></p>';
+
+
+
+
+
+
+
+$last_id_select = "SELECT max(id) FROM programari GROUP BY id;";
+$result_last_id = mysqli_query($conn,$last_id_select);
+$last_id = mysqli_fetch_assoc(result_last_id);
+echo $last_id['data_programare']
+
+
+
+if($vector[5]+15<=$vector2[5] || ($vector[4]<$vector2[4] && $vector[5]+15>$vector2[5])){
+        echo "Programarea a fost facuta acuma 15 minute";
+    } else{
+        echo "Programarea nu a fost facuta acuma 15 minute";
+        $minute = $vector2[5]-$vector[5]+15;
+        echo '<br>';
+        $programare_finala = date("Y-m-d H:i:s", strtotime("+$minute minutes"));
+        echo $programare_finala;
+    }
+
+
+
+
+
+
+
+
+    $data_program = date("Y-m-d H:i:s", strtotime("+1 hours"));
+                    $sql = "insert into programari (nume,prenume,telefon,data_accesare,data_programare) VALUES ('$nume', '$prenom', '$telefon', CURRENT_TIMESTAMP(), '$data_program');";
+                    mysqli_query($conn,$sql);
+                    // PDF
+                    
+                    $data_program2 = date("H:i", strtotime("+1 hours"));
+                    $mpdf = new \Mpdf\Mpdf();
+                    $data = '';
+                    $data .= '<h2>Programarea a fost făcută!</h2><br><br>';
+                    $data .= '<p>Trebuie să fiți prezent astăzi la ora: <b>'. $data_program2 . '</b></p>';
+                    $data .= '<p>Numele: <b>' . $nume . '</b></p>';
+                    $data .= '<p>Prenumele: <b>' . $prenom. '</b></p>';
+                    $data .= '<p>Număr de telefon: <b>' . $telefon. '</b></p>';
+                    $mpdf->WriteHTML($data);
+                    $nume_document= 'programare'.date("H.i").'.pdf';
+                    $mpdf->Output($nume_document, 'D');
+
+                    //PDF
+                    header("Location: ../formular.php?status=succes");
+                    exit();
+
+
+
+
+
+                    /*
+                    $data_program = date("Y-m-d H:i:s", strtotime("+1 hours"));
+                    $sql = "insert into programari (nume,prenume,telefon,data_accesare,data_programare) VALUES ('$nume', '$prenom', '$telefon', CURRENT_TIMESTAMP(), '$data_program');";
+                    mysqli_query($conn,$sql);
+                    // PDF
+                    
+                    $data_program2 = date("H:i", strtotime("+1 hours"));
+                    $mpdf = new \Mpdf\Mpdf();
+                    $data = '';
+                    $data .= '<h2>Programarea a fost făcută!</h2><br><br>';
+                    $data .= '<p>Trebuie să fiți prezent astăzi la ora: <b>'. $data_program2 . '</b></p>';
+                    $data .= '<p>Numele: <b>' . $nume . '</b></p>';
+                    $data .= '<p>Prenumele: <b>' . $prenom. '</b></p>';
+                    $data .= '<p>Număr de telefon: <b>' . $telefon. '</b></p>';
+                    $mpdf->WriteHTML($data);
+                    $nume_document= 'programare'.date("H.i").'.pdf';
+                    $mpdf->Output($nume_document, 'D');
+
+                    //PDF
+                    header("Location: ../formular.php?status=succes");
+                    exit();
+                    */
